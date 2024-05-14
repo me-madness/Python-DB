@@ -15,4 +15,8 @@ CREATE TABLE customers(
 INSERT INTO
 	customers(customer_name, customer_address)
 VALUES
-	('Rangel', ('8, rue Ermesinde', '6437'));
+	('Rangel', ('8, rue Ermesinde', 'Echternach', '6437'));
+
+SELECT
+	(customer_address).street
+FROM customers;	    
