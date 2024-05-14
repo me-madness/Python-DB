@@ -1,0 +1,2 @@
+# Truncate The Table
+
