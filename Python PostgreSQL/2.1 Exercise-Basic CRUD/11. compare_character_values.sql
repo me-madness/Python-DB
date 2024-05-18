@@ -6,4 +6,5 @@ SELECT
 FROM
 	projects
 WHERE
-	name IN ('Mountain', 'Road', 'Touring');
+	name IN ('Mountain', 'Road', 'Touring')
+LIMIT 20;
