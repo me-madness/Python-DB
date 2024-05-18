@@ -1,5 +1,9 @@
 -- Create a View with Multiple tables
 
+CREATE VIEW
+	view_addresses
+AS
+SELECT
 	CONCAT(
 		e.first_name,
 		' ',
