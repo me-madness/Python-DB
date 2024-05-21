@@ -13,7 +13,7 @@ SELECT
 		'and is', 
 		"length", 
 		'kilometers long.'
-	) AS "River INformation"
+	) AS "River Information"
 
 FROM
 	rivers
