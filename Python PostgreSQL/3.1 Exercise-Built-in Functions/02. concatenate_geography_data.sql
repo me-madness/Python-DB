@@ -8,11 +8,11 @@ SELECT
 		con.continent_name, ': ', con.continent_code
 	) AS continent_details,
 	CONCAT(
-		cou.country_name, ' - ', cou.capital, ' - ', cou.area_in_sq_km, 'km2'
+		cou.country_name, ' - ', cou.capital, ' - ', cou.area_in_sq_km, ' - ', 'km2'
 	) AS country_information,
 	CONCAT(
 		cur.description, ' (', cur.currency_code, ')'
-	) AS "Currencies"
+	) AS currencies
 
 FROM
 	continents AS con,
@@ -25,9 +25,10 @@ WHERE
 ORDER BY 
 	country_information,
 	"Currencies";
+
 ALTER VIEW
 	view_continents_countries_currencies_details
-RENAME COLUMN currencies TO "Currencies"	
+RENAME COLUMN currencies TO "Currencies";	
 
 SELECT * FROM
 	view_continents_countries_currencies_details;
