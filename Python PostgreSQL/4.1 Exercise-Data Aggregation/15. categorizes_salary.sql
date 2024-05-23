@@ -1,0 +1,2 @@
+-- Categorizes Salary
+
