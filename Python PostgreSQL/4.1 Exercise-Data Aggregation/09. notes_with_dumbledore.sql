@@ -1,9 +1,9 @@
 -- Notes with Dumbledore
 
 SELECT
-	first_name,
-	count(notes) AS last_name
+	last_name,
+	count(notes) AS notes_with_dumbledore
 FROM
 	wizard_deposits
 WHERE notes LIKE '%Dumbledore%'
-GROUP BY first_name;
+GROUP BY last_name;
