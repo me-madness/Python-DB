@@ -1,0 +1,2 @@
+-- AVG Magic Wand Size
+
