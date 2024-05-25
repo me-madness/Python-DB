@@ -1,2 +1,3 @@
 -- Categorizes Salary
 
+SELECT * FROM
