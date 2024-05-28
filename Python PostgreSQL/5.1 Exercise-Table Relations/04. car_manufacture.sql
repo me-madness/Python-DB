@@ -40,7 +40,7 @@ VALUES
 	('Model S', 2),
 	('Model X', 2),
 	('Model 3', 2),
-	('Nova');
+	('Nova', 3);
 
 INSERT INTO
 	production_years(established_on, manufacturer_id)
