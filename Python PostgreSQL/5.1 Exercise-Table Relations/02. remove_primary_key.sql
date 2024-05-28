@@ -1,6 +1,6 @@
 -- Remove Primary key
 
-ALTER TABLE
+ALTER TABLE	
 	products
-ADD COLUMN
-	"id" SERIAL PRIMARY KEY;
+DROP CONSTRAINT
+	products_pkey;
