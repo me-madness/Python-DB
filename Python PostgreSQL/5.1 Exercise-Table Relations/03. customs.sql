@@ -31,3 +31,12 @@ VALUES
 	('Roberto', 43300.00, 101),
 	('Tom', 56100.00, 102),
 	('Yana', 60200.00, 100);
+
+-- The two table in one
+SELECT * FROM 
+	people AS peop
+	
+JOIN 
+	passports AS pass
+ON	
+	peop.passport_id = pass.id;
