@@ -12,5 +12,6 @@ ON
 	peaks.mountain_id = mountains.id
 WHERE
 	mountain_range LIKE '%Rila%'
+	-- TRIM(mountain_range) = 'Rila'
 ORDER BY
 	elevation DESC;
