@@ -8,5 +8,6 @@ FROM
 	towns as t
 		JOIN addresses as a
 			ON t.town_id = a.town_id
+            -- USING(town_id)  second option
 WHERE t.name in ('San Francisco', 'Sofia', 'Carnation')	
 ORDER BY t.town_id, a.address_id;
