@@ -1,5 +1,3 @@
--- Database Design
-
 CREATE TABLE owners(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(50) NOT NULL,
@@ -36,7 +34,7 @@ CREATE TABLE volunteers(
 	phone_number VARCHAR(15) NOT NULL,
 	address VARCHAR(50),
 	animal_id INTEGER REFERENCES animals ON DELETE CASCADE ON UPDATE CASCADE,
-	department_id INTEGER REFERENCES valunteers_department ON DELETE CASCADE ON UPDATE CASCADE NOT NULL
+	department_id INTEGER REFERENCES volunteers_departments ON DELETE CASCADE ON UPDATE CASCADE NOT NULL
 );
 
 CREATE TABLE animals_cages(
