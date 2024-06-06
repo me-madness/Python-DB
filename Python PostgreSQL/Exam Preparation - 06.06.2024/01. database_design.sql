@@ -27,7 +27,7 @@ CREATE TABLE animals (
 
 CREATE TABLE volunteers_departments(
 	id SERIAL PRIMARY KEY,
-	department_anem VARCHAR(30) NOT NULL
+	department_name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE volunteers(
