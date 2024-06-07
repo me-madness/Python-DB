@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS cars(
 	model VARCHAR(20),
 	year INTEGER NOT NULL DEFAULT 0,
 	mileage INTEGER DEFAULT 0,
-	condition VARCHAR(1) NOT NULL,
+	condition CHAR(1) NOT NULL,
 	category_id INTEGER NOT NULL,
 
 	CONSTRAINT ck_cars_year_is_positive
