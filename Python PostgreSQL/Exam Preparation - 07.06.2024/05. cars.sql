@@ -2,7 +2,8 @@
 
 SELECT
 	make,
-	model
+	model,
+	condition
 FROM 
 	cars
 ORDER BY
