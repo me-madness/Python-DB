@@ -1,2 +1,3 @@
 -- Regular Clients
 
+SELECT * FROM
