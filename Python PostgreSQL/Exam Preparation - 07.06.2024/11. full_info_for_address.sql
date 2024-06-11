@@ -1,13 +1,16 @@
 -- Full Info for Address
 
+CREATE TABLE IF NOT EXISTS search_results (
+    id SERIAL PRIMARY KEY,
+    address_name VARCHAR(50),
+    full_name VARCHAR(100),
+    level_of_bill VARCHAR(20),
+    make VARCHAR(30),
+    condition CHAR(1),
+    category_name VARCHAR(50)
+);
 
-
-
-
-
-
-
-CREATE OR REPLACE FUNCTION sp_courses_by_address(
+CREATE OR REPLACE PROCEDURE sp_courses_by_address(
 	address_name VARCHAR(100)
 ) 
 AS
@@ -15,7 +18,7 @@ $$
 BEGIN
 	TRUNCATE search_results;
 
-	INSERT INTO serach_results(
+	INSERT INTO search_results(
 		address_name,
 		full_name,
 		level_of_bill,
@@ -31,7 +34,9 @@ BEGIN
 			WHEN co.bill <= 30 THEN 'Medium'
 			ELSE 'High'
 		END,
-			
+		cr.make,
+		cr.condition,
+		ca.name
 	FROM
 		addresses AS a
 	JOIN
