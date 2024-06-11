@@ -1,8 +1,8 @@
 -- Find all Courses by Client’s Phone Number
 
 CREATE OR REPLACE FUNCTION fn_courses_by_client(
-	phone_number VARCHAR(20)
-) RETURN INT
+	phone_num VARCHAR(20)
+) RETURNS INT
 AS
 $$
 BEGIN
@@ -16,7 +16,7 @@ BEGIN
 		ON
 			co.client_id = cl.id
 		WHERE
-			cl.phone_number = '(803 6386812'
+			cl.phone_number = phone_num
 	);
 END;
 $$
