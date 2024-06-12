@@ -63,3 +63,52 @@ LANGUAGE plpgsql;
 
 -- Task 05
 
+CREATE OR REPLACE FUNCTION (
+	
+)
+RETURNS VARCHAR AS 
+$$
+	BEGIN
+		
+	END;
+$$
+LANGUAGE plpgsql;
+
+-- Task 06
+
+CREATE OR REPLACE FUNCTION (
+	
+)
+RETURNS VARCHAR AS 
+$$
+	BEGIN
+		
+	END;
+$$
+LANGUAGE plpgsql;
+
+-- Task 07
+
+CREATE OR REPLACE FUNCTION (
+	
+)
+RETURNS VARCHAR AS 
+$$
+	BEGIN
+		
+	END;
+$$
+LANGUAGE plpgsql;
+
+-- Task 08
+
+CREATE OR REPLACE FUNCTION (
+	
+)
+RETURNS VARCHAR AS 
+$$
+	BEGIN
+		
+	END;
+$$
+LANGUAGE plpgsql;
