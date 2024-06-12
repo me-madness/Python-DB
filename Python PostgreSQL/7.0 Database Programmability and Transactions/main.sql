@@ -208,18 +208,21 @@ LANGUAGE plpgsql;
 
 SELECT * FROM fn_get_countrys();
 
--- Task 12
+-- Task 12 - Debug
 
-CREATE OR REPLACE FUNCTION (
-	
+CREATE OR REPLACE FUNCTION fn_show_notice(
+	msg VARCHAR(40)	
 )
-RETURNS VARCHAR AS 
+RETURNS BOOl AS 
 $$
 	BEGIN
-		
+		RAISE NOTICE 'The notice is %', msg;
+		RETURN TRUE;
 	END;
 $$
 LANGUAGE plpgsql;
+
+SELECT fn_show_notice('Hello notice')
 
 -- Task 13
 
