@@ -149,3 +149,68 @@ $$
 	END;
 $$
 LANGUAGE plpgsql;
+
+-- Task 09
+
+CREATE OR REPLACE FUNCTION (
+	
+)
+RETURNS VARCHAR AS 
+$$
+	BEGIN
+		
+	END;
+$$
+LANGUAGE plpgsql;
+
+-- Task 10
+
+CREATE OR REPLACE FUNCTION (
+	
+)
+RETURNS VARCHAR AS 
+$$
+	BEGIN
+		
+	END;
+$$
+LANGUAGE plpgsql;
+
+-- Task 11
+
+CREATE OR REPLACE FUNCTION (
+	
+)
+RETURNS VARCHAR AS 
+$$
+	BEGIN
+		
+	END;
+$$
+LANGUAGE plpgsql;
+
+-- Task 12
+
+CREATE OR REPLACE FUNCTION (
+	
+)
+RETURNS VARCHAR AS 
+$$
+	BEGIN
+		
+	END;
+$$
+LANGUAGE plpgsql;
+
+-- Task 13
+
+CREATE OR REPLACE FUNCTION (
+	
+)
+RETURNS VARCHAR AS 
+$$
+	BEGIN
+		
+	END;
+$$
+LANGUAGE plpgsql;
