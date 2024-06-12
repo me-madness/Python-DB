@@ -35,16 +35,18 @@ SELECT * FROM fn_full_name('Milko', 'Toshev')
 
 -- Task 03
 
-CREATE OR REPLACE FUNCTION (
-	
+CREATE OR REPLACE FUNCTION fn_get_name_len(
+	name VARCHAR
 )
-RETURNS VARCHAR AS 
+RETURNS INT AS 
 $$
 	BEGIN
-		
+		RETURN length(name)
 	END;
 $$
 LANGUAGE plpgsql;
+
+SELECT * FROM fn_get_name_len(name: 'Koko');
 
 -- Task 04
 
