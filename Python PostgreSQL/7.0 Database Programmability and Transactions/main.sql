@@ -193,18 +193,20 @@ $$
 $$
 LANGUAGE plpgsql;
 
--- Task 11
+-- Task 11 - Returns Table
 
-CREATE OR REPLACE FUNCTION (
+CREATE OR REPLACE FUNCTION fn_get_countrys(
 	
 )
-RETURNS VARCHAR AS 
+RETURNS TABLE (id int, name VARCHAR) AS 
 $$
 	BEGIN
-		
+		RETURN (SELECT * FROM country);
 	END;
 $$
 LANGUAGE plpgsql;
+
+SELECT * FROM fn_get_countrys();
 
 -- Task 12
 
