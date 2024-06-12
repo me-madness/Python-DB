@@ -126,16 +126,20 @@ LIMIT 1
 
 -- Task 07
 
-CREATE OR REPLACE FUNCTION (
-	
+DROP FUNCTION fn_get_city_id
+
+CREATE OR REPLACE FUNCTION fn_get_city_id(
+	IN city_name VARCHAR, OUT city_id INT
 )
-RETURNS VARCHAR AS 
+AS 
 $$
 	BEGIN
-		
+		SELECT id FROM country WHERE country_name = city_name INTO city_id;
 	END;
 $$
 LANGUAGE plpgsql;
+
+SELECT * FROM fn_get_city_id('Bulgaria')
 
 -- Task 08
 
