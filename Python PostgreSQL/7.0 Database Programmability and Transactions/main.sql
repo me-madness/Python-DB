@@ -56,7 +56,7 @@ CREATE OR REPLACE FUNCTION fn_full_name(
 RETURNS VARCHAR AS 
 $$
 	DECLARE
-		full_name VARCHAR(30)
+		full_name VARCHAR(30);
 	BEGIN
 		IF first_name is NULL AND last_name is NULL THEN
 			full_name := NULL;
@@ -76,16 +76,23 @@ SELECT * FROM fn_full_name('Koko', NULL)
 
 -- Task 05
 
-CREATE OR REPLACE FUNCTION (
-	
+CREATE OR REPLACE FUNCTION fn_get_city_id(
+	city VARCHAR
 )
-RETURNS VARCHAR AS 
+RETURNS INT AS 
 $$
+	DECLARE
+		city_id int;
 	BEGIN
-		
+		SELECT id FROM country WHERE country_name = city INTO city_id;
+		RETURN city_id;
 	END;
 $$
 LANGUAGE plpgsql;
+
+SELECT id FROM country WHERE country_name = 'Germany'
+SELECT * FROM fn_get_city_id('Germany')
+
 
 -- Task 06
 
