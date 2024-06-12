@@ -96,16 +96,33 @@ SELECT * FROM fn_get_city_id('Germany')
 
 -- Task 06
 
-CREATE OR REPLACE FUNCTION (
-	
+CREATE OR REPLACE FUNCTION fn_get_city_id(
+	city VARCHAR
 )
-RETURNS VARCHAR AS 
+RETURNS INT AS 
 $$
+	DECLARE
+		city_id int;
 	BEGIN
-		
+		SELECT id FROM country WHERE country_name = city INTO city_id;
+		RETURN city_id;
 	END;
 $$
 LANGUAGE plpgsql;
+
+INSERt INTO persons (id, first_name, last_name, country_id, department)
+VALUES (
+		1011,
+		'Pencho',
+		'Kubadinski',
+		fn_get_city_id('Germany'),
+		'Lov i ribolov'
+)	
+
+SELECT * FROM persons
+ORDER BY id DESC
+LIMIT 1
+
 
 -- Task 07
 
