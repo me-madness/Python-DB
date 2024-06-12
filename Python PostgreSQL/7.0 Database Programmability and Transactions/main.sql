@@ -162,16 +162,23 @@ SELECT * FROM fn_get_city_id('Bulgaria')
 
 -- Task 09
 
-CREATE OR REPLACE FUNCTION (
-	
+CREATE OR REPLACE FUNCTION fn_insert_data(
+	id INT, name VARCHAR
 )
-RETURNS VARCHAR AS 
+RETURNS BOOLEAN AS 
 $$
+	DECLARE
 	BEGIN
-		
+		INSERT INTO country(id, country_name)
+		VALUES(id, name);
+		EXCEPTION
+			WHEN UNIQUE_VIOLATIO THEN RETURN FALSE;
+		RETURN TRUE;
 	END;
 $$
 LANGUAGE plpgsql;
+
+SELECT fn_insert_data(14, 'Bangladesh')
 
 -- Task 10
 
