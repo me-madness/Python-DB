@@ -1,0 +1,12 @@
+-- Task 01
+
+CREATE OR REPLACE FUNCTION fn_full_name(
+	VARCHAR, VARCHAR
+)
+RETURNS VARCHAR AS 
+$$
+	BEGIN
+		
+	END;
+$$
+LANGUAGE plpgsql;
