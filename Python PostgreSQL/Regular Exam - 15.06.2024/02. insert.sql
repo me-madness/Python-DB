@@ -2,14 +2,13 @@
 
 INSERT INTO
 	addresses(street, town, country, account_id)
+
 SELECT	
-	username,
-	password,
-	ip,
-	age
+	ac.username,
+	ac.password,
+	ac.ip,
+	ac.age
 FROM
 	accounts AS ac
-JOIN
-	addresses AS ad
-USING 
-	(id);
+WHERE 
+	ac.gender = 'F';
