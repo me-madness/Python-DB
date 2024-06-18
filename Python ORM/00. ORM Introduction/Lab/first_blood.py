@@ -5,7 +5,9 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-
+class User(BaseModel):
+  username = str
+  password = str
 
 @app.get('/first_blood')
 def test_func():
