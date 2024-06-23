@@ -39,5 +39,5 @@ class Recipe(models.Model):
     cook_time = models.PositiveBigIntegerField()
     
     create_at = models.DateTimeField(
-        auto_now_add=True
+        auto_now_add=True,
     )    
