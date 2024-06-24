@@ -16,6 +16,10 @@ def create_unique_brands(apps, schema_editor):
     # Right Way
     unique_brands.objects.bulk_create([unique_brands(brand_name=brand_name) for brand_name in unique_brands_name])
 
+
+def reverse_unique_brands(apps, schema_editor):
+    unique_brands = apps.get_model('main_app', 'UniqueBrands')
+    unique_brands.objects.all().delete()
     # Wrong Way
     # for brand_name in unique_brands_name:
     #     unique_brands.create(brand_name=brand_name) # INSERT INTO unique_brands(brand_name) VALUES (brand_name)
@@ -27,4 +31,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunPython(create_unique_brands, reverse_unique_brands)
     ]
