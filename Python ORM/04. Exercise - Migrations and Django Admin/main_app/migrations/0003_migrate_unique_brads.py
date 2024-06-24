@@ -14,7 +14,7 @@ def create_unique_brands(apps, schema_editor):
     unique_brands_name = shoe.objects.values_list('brand', flat=True).distinct()
 
     # Right Way
-    unique_brands.objects.bulk_create([unique_brands(brand_name=brand_name) for brand_name in unique_brands_name])
+    unique_brands.objects.bulk_create([unique_brands(brand=brand_name) for brand_name in unique_brands_name])
 
 
 def reverse_unique_brands(apps, schema_editor):
