@@ -37,8 +37,8 @@ def  add_students():
     Student.objects.create(
         student_id='FH2015',
         first_name='Bob',
-        last_name='Wolson',
+        last_name='Wilson',
         birth_date='1996-11-25',
-        email='bob.wolson@university.com'
+        email='bob.wilson@university.com'
     )
 # Run and print your queries
