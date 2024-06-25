@@ -59,6 +59,9 @@ def update_students_emails():
         s.save()
 
     
+def truncate_students():
+    all_students = Student.objects.all()
+
     
 # Run and print your queries
     
