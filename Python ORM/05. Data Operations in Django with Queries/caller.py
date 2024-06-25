@@ -60,7 +60,7 @@ def update_students_emails():
 
     
 def truncate_students():
-    all_students = Student.objects.all()
+    all_students = Student.objects.all().delete()
 
     
 # Run and print your queries
