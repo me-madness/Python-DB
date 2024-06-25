@@ -41,4 +41,12 @@ def  add_students():
         birth_date='1996-11-25',
         email='bob.wilson@university.com'
     )
+
+
+# Student №{student_id}: {first_name} {last_name}; Email: {email}
+
+def get_students_info():
+
+
 # Run and print your queries
+    
