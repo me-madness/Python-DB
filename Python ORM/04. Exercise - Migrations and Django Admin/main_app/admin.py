@@ -1,3 +1,7 @@
 from django.contrib import admin
+from main_app.models import EventRegistration
 
-# Register your models here.
+
+@admin.register(EventRegistration)
+class EventRegistrationAdmin(admin.ModelAdmin):
+    
