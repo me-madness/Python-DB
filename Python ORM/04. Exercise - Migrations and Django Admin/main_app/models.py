@@ -17,11 +17,11 @@ class UniqueBrands(models.Model):
         
 class EventRegistration(models.Model):
     event_name = models.CharField(
-        max_length=60,
+        max_length=50,
     )
 
     participant_name = models.CharField(
-        max_length=50,
+        max_length=60,
     )
 
     registration_date = models.DateField()
