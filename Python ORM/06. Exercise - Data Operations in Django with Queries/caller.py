@@ -39,4 +39,26 @@ def create_artifact(name: str, origin: str, age: int, description: str,  is_magi
     
     return f"The artifact {artifact.name} is {artifact.age} years old!"
 
+
 create_artifact("golden cup", "indiana jones", 2000, "Old", True)
+
+
+def rename_artifact(artifact: Artifact, new_name: str):
+    # First Way
+    # Artifact.objects.filter(is_magical=True, age__gt=250, pk=artifact.pk).update(name=new_name) --pk Primary Key
+    
+    # Second Way
+    if artifact.is_magical and artifact.age > 250:
+        artifact.name = new_name
+        artifact.save()
+        
+   
+golden_cup = Artifact.objects.get(pk=1) # SELECT * FROM artifact WHERE id = 1
+rename_artifact(golden_cup, "bronze_cup")     
+
+
+def delete_all_artifacts():
+    Artifact.objects.all().delete()
+    
+ 
+delete_all_artifacts()    
