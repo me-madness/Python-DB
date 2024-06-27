@@ -8,6 +8,7 @@ django.setup()
 # Import your models here
 from main_app.models import Pet
 from main_app.models import Artifact
+from main_app.models import Location
 # from polulate_db_script import populate_model_with_data
 
 # Create queries within functions
@@ -61,4 +62,8 @@ def delete_all_artifacts():
     Artifact.objects.all().delete()
     
  
-delete_all_artifacts()    
+delete_all_artifacts()   
+
+
+def show_all_location(name: str, population: str) -> str:
+    pass 
