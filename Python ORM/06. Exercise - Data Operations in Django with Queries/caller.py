@@ -8,7 +8,7 @@ django.setup()
 # Import your models here
 from main_app.models import Pet
 from main_app.models import Artifact
-from polulate_db_script import populate_model_with_data
+# from polulate_db_script import populate_model_with_data
 
 # Create queries within functions
 def create_pet(name: str, species: str) -> str:
@@ -38,3 +38,5 @@ def create_artifact(name: str, origin: str, age: int, description: str,  is_magi
     )
     
     return f"The artifact {artifact.name} is {artifact.age} years old!"
+
+create_artifact("golden cup", "indiana jones", 2000, "Old", True)
