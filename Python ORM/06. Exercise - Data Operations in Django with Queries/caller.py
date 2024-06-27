@@ -104,6 +104,19 @@ def apply_discount() -> None:
         discount = float(car.price) * percentage_off # 1000 * 0.07 => 70
         car.price_with_discount = float(car.price) - discount # 1000 - 70 => 930
         car.save()
-        
-        
-apply_discount()        
+                
+# apply_discount()        
+
+
+def get_recent_cars() -> QuerySet:
+    return Car.objects.filter(year__gt=2020).values('model', 'price_with_discount')
+
+# get_recent_cars()
+
+
+def delete_last_car() -> None:
+    Car.objects.last().delete()
+    
+# delete_last_car()    
+
+
