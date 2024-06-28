@@ -16,7 +16,7 @@ def find_book_by_find_books_by_genre_and_language(genre: str, language: str):
 
 def find_authors_nationalities():
     result = []
-    authors = Author.objects.exclude(nationalities=None)
+    authors = Author.objects.exclude(nationality=None)
     for a in authors:
         result.append(f"{a.first_name} {a.last_name} is {a.nationality}")
         
