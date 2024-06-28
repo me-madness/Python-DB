@@ -51,8 +51,13 @@ def delete_review_by_id(id):
 
 
 # Task 05.Filter Authors by Nationalities
-def filter_authors_by_nationalities():
-    pass
+def filter_authors_by_nationalities(nationality: str) -> str:
+    result = []
+    authors = Author.objects.filter(nationality=nationality).order_by('first_name', 'last_name')
+    for a in authors:    
+        result.append(a.biography) if a.biography is not None else result.append(f'{a.first_name} {a.last_name}')
+        
+    return '\n'.join(result)    
 
 
 # Task 06.Filter Authors by Birth Year
