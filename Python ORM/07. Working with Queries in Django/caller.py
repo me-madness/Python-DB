@@ -44,8 +44,10 @@ def order_books_by_year():
 
 
 # Task 04.Delete Review by ID
-def delete_review_by_id():
-    pass
+def delete_review_by_id(id):
+    review = Review.objects.get(id =id)
+    review.delete()
+    return f"Review by {review.reviewer_name} was deleted"
 
 
 # Task 05.Filter Authors by Nationalities
