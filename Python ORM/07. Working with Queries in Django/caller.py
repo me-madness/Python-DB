@@ -63,7 +63,7 @@ def filter_authors_by_nationalities(nationality: str) -> str:
 # Task 06.Filter Authors by Birth Year
 def filter_authors_by_birth_year(start_year, end_year):
     result = []
-    authors = Author.objects.filter(birth_year__year__range=(start_year, end_year)).order_by('-birth_date')
+    authors = Author.objects.filter(birth_date__year__range=(start_year, end_year)).order_by('-birth_date')
     for a in authors:
         result.append(f"{a.birth_date}: {a.first_name} {a.last_name}")
         
@@ -71,8 +71,9 @@ def filter_authors_by_birth_year(start_year, end_year):
 
 
 # Task 07.Change Reviewer's Name
-def change_reviewer_name():
-    pass
+def change_reviewer_name(old_name, new_name):
+    Review.objects.filter(reviewer_name=old_name).update(reviewer_name=new_name)
+    return Review.objects.all()
 
 
 # Run and print your queries
