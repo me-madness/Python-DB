@@ -12,6 +12,7 @@ from main_app.models import Pet
 from main_app.models import Artifact
 from main_app.models import Location
 from main_app.models import Car
+from main_app.models import TaskEncoder
 
 
 # Create queries within functions
@@ -120,3 +121,13 @@ def delete_last_car() -> None:
 # delete_last_car()    
 
 
+def show_unfinished_tasks() -> None:
+    pass
+
+
+def complete_odd_tasks() -> None:
+    pass
+
+
+def encode_and_replace(test: str, task_title: str) -> None:
+    pass
