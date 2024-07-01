@@ -25,21 +25,25 @@ def bulk_create_arts(first_art: ArtworkGallery, second_art: ArtworkGallery) -> N
         first_art,
         second_art,
     ])
-art1 = ArtworkGallery(
-    art_name="ie2j",
-    artist_name="dido",
-    rating=5,
-    price=0,    
-)
-art2 = ArtworkGallery(
-    art_name="fwfwert",
-    artist_name="mido",
-    rating=6,
-    price=0,
-)
+# art1 = ArtworkGallery(
+#     art_name="ie2j",
+#     artist_name="dido",
+#     rating=5,
+#     price=0,    
+# )
+# art2 = ArtworkGallery(
+#     art_name="fwfwert",
+#     artist_name="mido",
+#     rating=6,
+#     price=0,
+# )
 
-def delete_negative_rated_arts():
-    pass
+# print(bulk_create_arts())
+
+
+def delete_negative_rated_arts() -> None:
+    ArtworkGallery.objects.filter(rating__lt=0)
+    # DELETE * FROM artwork WHERE rating < 0
 
   
 # Run and print your queries
