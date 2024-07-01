@@ -6,8 +6,9 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
 # Import your models
-from helpers import populate_model_with_data
+# from helpers import populate_model_with_data
 from main_app.models import ArtworkGallery
+from main_app.models import Laptop
 
 
 # Create and check models
@@ -47,7 +48,13 @@ def delete_negative_rated_arts() -> None:
 
 # delete_negative_rated_arts()
   
+
+def show_the_most_expensive_laptop() -> str:
+    most_expensive_laptop = Laptop.objects.filter('-price', '-id').first()
+
+    return f"{most_expensive_laptop.brand} is the most expensive laptop available for {most_expensive_laptop.price}$"
+
       
 # Run and print your queries
 
-populate_model_with_data(ArtworkGallery, 20)
+# populate_model_with_data(ArtworkGallery, 20)

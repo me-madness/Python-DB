@@ -9,3 +9,11 @@ class LaptopBrandChoice(models.TextChoices):
     APPLE = "APPLE", "APPLE"
     LENOVO = "LENOVO", "LENOVO"
     DELL = "DELL", "DELL"
+    
+    
+class OperationSystemChoice(models.TextChoices):
+    WINDOWS = "WINDOWS", "WINDOWS"    
+    MACOS = "MACOS", "MACOS"    
+    LINUX = "LINUX", "LINUX"    
+    CHROME_OS = "CHROME_OS", "CHROME_OS"    
+       
