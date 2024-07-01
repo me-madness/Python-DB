@@ -71,7 +71,10 @@ class ArtworkGallery(models.Model):
         max_length=100,
     )
     
-    rating = models.PositiveIntegerField()
+    rating = models.IntegerField()
     
-    price = models.DecimalField(10, 2)
+    price = models.DecimalField(
+        max_digits=10, 
+        decimal_places=2,
+        )
     
