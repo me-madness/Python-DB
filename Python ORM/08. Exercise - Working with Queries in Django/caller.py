@@ -60,7 +60,22 @@ def bulk_create_laptops(args: List[Laptop]) -> None:
     Laptop.objects.bulk_create(args) 
    
 
-      
+
+def update_to_512_toGB_storage() -> None:
+    """
+    UPDATE laptop
+    SET storage = 512
+    WHERE brand in (Asus, Lenovo)
+    """
+    Laptop.objects.filter(brand__in=("Asus", "Lenovo")).update(storage=512)
+
+
+def name(args):
+ pass
+
+
+def name(args):
+ pass      
 # Run and print your queries
 
 # populate_model_with_data(Laptop)
