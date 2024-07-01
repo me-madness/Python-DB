@@ -58,6 +58,8 @@ def show_the_most_expensive_laptop() -> str:
  
 def bulk_create_laptops(args: List[Laptop]) -> None:
     Laptop.objects.bulk_create(args) 
+   
+
       
 # Run and print your queries
 
