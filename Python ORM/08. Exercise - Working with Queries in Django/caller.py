@@ -99,7 +99,7 @@ def update_operation_systems() -> None:
     )
 
 def delete_inexpensive_laptops() -> None:
-    pass
+    Laptop.objects.filter(price__lt=1200).delete()
 
 
 # Run and print your queries
