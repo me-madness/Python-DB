@@ -17,3 +17,4 @@ class OperationSystemChoice(models.TextChoices):
     LINUX = "LINUX", "LINUX"    
     CHROME_OS = "CHROME_OS", "CHROME_OS"    
        
+       
