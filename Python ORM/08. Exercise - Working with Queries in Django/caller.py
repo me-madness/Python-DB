@@ -6,7 +6,8 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
 # Import your models
-# from helpers import populate_model_with_data
+from typing import List
+from helpers import populate_model_with_data
 from main_app.models import ArtworkGallery
 from main_app.models import Laptop
 
@@ -54,7 +55,10 @@ def show_the_most_expensive_laptop() -> str:
 
     return f"{most_expensive_laptop.brand} is the most expensive laptop available for {most_expensive_laptop.price}$"
 
+ 
+def bulk_create_laptops(args: List[Laptop]) -> None:
+    Laptop.objects.bulk_create(args) 
       
 # Run and print your queries
 
-# populate_model_with_data(ArtworkGallery, 20)
+# populate_model_with_data(Laptop)
