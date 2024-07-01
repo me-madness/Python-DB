@@ -42,10 +42,12 @@ def bulk_create_arts(first_art: ArtworkGallery, second_art: ArtworkGallery) -> N
 
 
 def delete_negative_rated_arts() -> None:
-    ArtworkGallery.objects.filter(rating__lt=0)
+    ArtworkGallery.objects.filter(rating__lt=0).delete()
     # DELETE * FROM artwork WHERE rating < 0
 
+# delete_negative_rated_arts()
   
+      
 # Run and print your queries
 
-populate_model_with_data(ArtworkGallery, 20)
+# populate_model_with_data(ArtworkGallery, 20)
