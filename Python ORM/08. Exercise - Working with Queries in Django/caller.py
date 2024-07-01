@@ -20,9 +20,23 @@ def show_highest_rated_art() -> str:
 # print(show_highest_rated_art())
 
 
-def bulk_create_arts(first_art, second_art):
-    pass
-
+def bulk_create_arts(first_art: ArtworkGallery, second_art: ArtworkGallery) -> None:
+    ArtworkGallery.objects.bulk_create([
+        first_art,
+        second_art,
+    ])
+art1 = ArtworkGallery(
+    art_name="ie2j",
+    artist_name="dido",
+    rating=5,
+    price=0,    
+)
+art2 = ArtworkGallery(
+    art_name="fwfwert",
+    artist_name="mido",
+    rating=6,
+    price=0,
+)
 
 def delete_negative_rated_arts():
     pass
