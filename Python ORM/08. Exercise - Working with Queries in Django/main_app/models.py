@@ -78,3 +78,6 @@ class ArtworkGallery(models.Model):
         decimal_places=2,
         )
     
+    
+class Laptop(models.Model):
+    brand = Laptop.object.all()    
