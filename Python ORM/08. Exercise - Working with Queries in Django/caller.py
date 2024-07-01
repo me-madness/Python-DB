@@ -70,12 +70,19 @@ def update_to_512_toGB_storage() -> None:
     Laptop.objects.filter(brand__in=("Asus", "Lenovo")).update(storage=512)
 
 
-def name(args):
- pass
+def update_to_16_GB_memory() -> None:
+    Laptop.objects.filter(brand__in=("Apple", "Dell", "Acer")).update(memory=16)
 
 
-def name(args):
- pass      
+
+def update_operation_systems() -> None:
+    pass      
+
+
+def delete_inexpensive_laptops() -> None:
+    pass
+
+
 # Run and print your queries
 
 # populate_model_with_data(Laptop)
