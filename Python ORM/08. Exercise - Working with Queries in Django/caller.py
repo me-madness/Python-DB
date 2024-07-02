@@ -82,11 +82,11 @@ def update_to_16_GB_memory() -> None:
 
 def update_operation_systems() -> None:
     # Solution One
-    Laptop.objects.filter(brand="Asus").update(operation_systems=OperationSystemChoice.WINDOWS)
-    Laptop.objects.filter(brand="Apple").update(operation_systems=OperationSystemChoice.MACOS)
-    Laptop.objects.filter(brand="Apple").update(operation_systems=OperationSystemChoice.MACOS)
-    Laptop.objects.filter(brand__in=("Dell", "Acer")).update(operation_systems=OperationSystemChoice.LINUX)
-    Laptop.objects.filter(brand="Lenovo").update(operation_systems=OperationSystemChoice.CHROME_OS)
+    # Laptop.objects.filter(brand="Asus").update(operation_systems=OperationSystemChoice.WINDOWS)
+    # Laptop.objects.filter(brand="Apple").update(operation_systems=OperationSystemChoice.MACOS)
+    # Laptop.objects.filter(brand="Apple").update(operation_systems=OperationSystemChoice.MACOS)
+    # Laptop.objects.filter(brand__in=("Dell", "Acer")).update(operation_systems=OperationSystemChoice.LINUX)
+    # Laptop.objects.filter(brand="Lenovo").update(operation_systems=OperationSystemChoice.CHROME_OS)
 
     # Solution Two
     Laptop.objects.update(
