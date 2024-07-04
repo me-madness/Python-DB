@@ -21,4 +21,12 @@ def show_all_authors_with_their_books() -> str:
         books = Book.objects.filter(author=author)
         # books = author.book_set.all() # Option 2
         
+        if not books:
+            continue
+        
+        titles = ", ".join(b.title for b in books)
+        authors_with_books.append(
+            f"{author.name} has written - {titles}!"
+        )
+        
     return "\n".join(authors_with_books)    
