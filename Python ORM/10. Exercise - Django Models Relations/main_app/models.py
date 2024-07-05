@@ -41,19 +41,19 @@ class Artist(models.Model):
     )
     
 
-class Product(models.Model):
-    name = models.CharField(
-        max_length=100,
-        unique=True
-    )    
+# class Product(models.Model):
+#     name = models.CharField(
+#         max_length=100,
+#         unique=True
+#     )    
     
     
-class Review(models.Model):
-    description = models.TextField()
+# class Review(models.Model):
+#     description = models.TextField()
     
-    rating = models.PositiveSmallIntegerField()
+#     rating = models.PositiveSmallIntegerField()
     
-    product = models.ForeignKey(
-        to=Product,
-        on_delete=models.CASCADE,
-    )    
+#     product = models.ForeignKey(
+#         to=Product,
+#         on_delete=models.CASCADE,
+#     )    
