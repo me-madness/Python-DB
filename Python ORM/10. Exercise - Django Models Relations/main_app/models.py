@@ -39,3 +39,21 @@ class Artist(models.Model):
         to=Song,
         on_delete=models.CASCADE,
     )
+    
+
+class Product(models.Model):
+    name = models.CharField(
+        max_length=100,
+        unique=True
+    )    
+    
+    
+class Review(models.Model):
+    description = models.TextField()
+    
+    rating = models.PositiveSmallIntegerField()
+    
+    product = models.ForeignKey(
+        to=Product,
+        on_delete=models.CASCADE,
+    )    
