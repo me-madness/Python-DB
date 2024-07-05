@@ -36,3 +36,13 @@ def delete_all_authors_without_books() -> None:
     Author.objects.filter(book__isnull=True).delete()
         
 
+def add_song_to_artist(artist_name: str, song_title: str) :
+    pass
+
+
+def get_songs_by_artist(artist_name: str):
+    pass
+
+
+def remove_song_from_artist(artist_name: str, song_title: str):
+    pass
