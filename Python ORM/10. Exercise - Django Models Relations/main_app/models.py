@@ -23,4 +23,19 @@ class Book(models.Model):
     )
     
     
+class Song(models.Model):
+    title = models.CharField(
+        max_length=100,
+        unique=True
+    )    
     
+    
+class Artist(models.Model):
+    name = models.CharField(
+        max_length=100,
+    )    
+
+    songs = models.ForeignKey(
+        to=Song,
+        on_delete=models.CASCADE,
+    )
