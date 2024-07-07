@@ -50,17 +50,17 @@ def remove_song_from_artist(artist_name: str, song_title: str):
 
 
 # Task 03 Shop 
-def calculate_average_rating_for_product_by_name(product_name: str):
-    pass
+# def calculate_average_rating_for_product_by_name(product_name: str):
+#     pass
 
 
-def get_reviews_with_high_ratings(threshold: int):
-    pass
+# def get_reviews_with_high_ratings(threshold: int):
+#     pass
 
 
-def get_products_with_no_reviews():
-    pass
+# def get_products_with_no_reviews():
+#     pass
 
 
-def delete_products_without_reviews():
-    pass  
+# def delete_products_without_reviews():
+#     pass  
