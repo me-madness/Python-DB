@@ -9,7 +9,7 @@ class BaseCharacter(models.Model):
         max_length=100,
     )
     
-    description = models.TextField
+    description = models.TextField()
     
     
 class Mage(BaseCharacter):
@@ -43,7 +43,7 @@ class DemonHunter(BaseCharacter):
     
     
 class TimeMage(Mage):
-    time_magic_mastery  = models.CharField(
+    time_magic_mastery = models.CharField(
         max_length=100,
     ) 
     
@@ -88,3 +88,5 @@ class FelbladeDemonHunter(DemonHunter):
     felblade_ability = models.CharField(
         max_length=100,
     )      
+    
+  
