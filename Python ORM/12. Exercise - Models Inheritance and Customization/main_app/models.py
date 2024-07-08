@@ -42,4 +42,14 @@ class DemonHunter(BaseCharacter):
     )
     
     
+class TimeMage(Mage):
+    time_magic_mastery  = models.CharField(
+        max_length=100,
+    ) 
     
+    temporal_shift_ability = models.CharField(
+        max_length=100,
+    )  
+    
+    
+      
