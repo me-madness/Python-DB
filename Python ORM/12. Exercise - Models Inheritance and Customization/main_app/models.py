@@ -134,7 +134,15 @@ class Message(models.Model):
         # good to save it
         
     def reply_to_message(self, reply_content: str) -> "Message":
-        pass
+        message = Message(
+            sender=self.receiver,
+            receiver=self.sender,
+            content=reply_content
+        )
+        
+        message.save()
+        
+        return message
     
     
     def forward_message(receiver: UserProfile):
