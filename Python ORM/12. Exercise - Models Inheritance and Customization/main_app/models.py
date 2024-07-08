@@ -106,5 +106,36 @@ class UserProfile(models.Model):
     )
     
     
-class Message():
+class Message(models.Model):
+    sender = models.ForeignKey(
+        to=UserProfile,
+        on_delete=models.CASCADE,
+        related_name="sent_messages",
+    )
+    
+    receiver = models.ForeignKey(
+        to=UserProfile,
+        on_delete=models.CASCADE,
+        related_name="receiver_messages",
+    )    
+    
+    content = models.TextField()
+    
+    timestamp = models.DateTimeField(
+        auto_now_add=True,
+    )
+    
+    is_read = models.BooleanField(
+        default=False,
+    )
+    
+    def mark_as_read(self) -> None:
+        self.is_read = True
+        # good to save it
         
+    def reply_to_message(self, reply_content: str) -> "Message":
+        pass
+    
+    
+    def forward_message(receiver: UserProfile):
+        pass    
