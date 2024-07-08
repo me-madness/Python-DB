@@ -32,4 +32,14 @@ class Assassin(BaseCharacter):
     ) 
     
     
+class DemonHunter(BaseCharacter):
+    weapon_type = models.CharField(
+        max_length=100,
+    )    
+    
+    demon_slaying_ability = models.CharField(
+        max_length=100,
+    )
+    
+    
     
