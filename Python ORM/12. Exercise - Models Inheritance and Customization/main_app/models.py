@@ -137,7 +137,7 @@ class Message(models.Model):
         message = Message(
             sender=self.receiver,
             receiver=self.sender,
-            content=reply_content
+            content=reply_content,
         )
         
         message.save()
@@ -145,5 +145,13 @@ class Message(models.Model):
         return message
     
     
-    def forward_message(receiver: UserProfile):
-        pass    
+    def forward_message(self, receiver: UserProfile) -> "Message":
+        message = Message(
+            sender=self.receiver,
+            receiver=self.sender,
+            content=self.content,
+        )
+        
+        message.save()
+        
+        return message   
