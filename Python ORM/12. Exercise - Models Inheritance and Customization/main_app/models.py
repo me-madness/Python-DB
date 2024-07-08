@@ -89,4 +89,22 @@ class FelbladeDemonHunter(DemonHunter):
         max_length=100,
     )      
     
-  
+
+class UserProfile(models.Model):
+    username = models.CharField(
+        max_length=70,
+        unique=True,
+    )  
+    
+    email = models.EmailField(
+        unique=True,
+    )
+    
+    bio = models.TextField(
+        null=True,
+        blank=True,
+    )
+    
+    
+class Message():
+        
