@@ -52,4 +52,17 @@ class TimeMage(Mage):
     )  
     
     
-      
+class Necromancer(Mage):
+    raise_dead_ability = models.CharField(
+        max_length=100,
+    )  
+    
+    
+class ViperAssassin(Assassin):
+    venomous_strikes_mastery = models.CharField(
+        max_length=100,
+    )  
+        
+    venomous_bite_ability = models.CharField(
+        max_length=100,
+    )  
