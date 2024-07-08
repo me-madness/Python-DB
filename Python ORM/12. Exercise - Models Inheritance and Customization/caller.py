@@ -14,7 +14,7 @@ django.setup()
 # from main_app.models import UserProfile, Message
 
 # Import for Task 03
-from main_app.models import 
+# from main_app.models import 
 
 # Create queries within functions
 

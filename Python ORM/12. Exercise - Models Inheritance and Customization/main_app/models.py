@@ -154,4 +154,15 @@ class Message(models.Model):
         
         message.save()
         
-        return message   
+        return message 
+    
+    
+class StudentIDField(models.PositiveIntegerField):
+    def to_python(self, value) -> None:
+        try:
+            return int(value)
+        except ValueError:
+            raise ValueError("Invalid Input for student ID")      
+        
+        
+        
