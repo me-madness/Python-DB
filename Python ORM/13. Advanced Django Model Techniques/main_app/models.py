@@ -1,3 +1,4 @@
+from ast import Index
 from django.core.validators import MinLengthValidator, MaxLengthValidator
 from main_app.validators import validate_menu_categories
 from django.db import models
@@ -94,4 +95,36 @@ class FoodCriticRestaurantReview(RestaurantReview):
         verbose_name = 'Food Critic Review'
         verbose_name_plural = 'Food Critic Review'
         
+   
+   
+# Task 05 Menu Review
+class MenuReview(models.Model):
+    reviewer_name = models.CharField(
+        max_length=100
+    )        
+    
+    menu = models.ForeignKey(
+        to=Menu,
+        on_delete=models.CASCADE
+    )
+    
+    review_content = models.TextField()
+    
+    rating = models.PositiveIntegerField(
+        validators=[
+            MaxLengthValidator(5)
+        ]
+    )
+    
+    class Meta:
+        ordering = ['-rating']
+        verbose_name = 'Menu Reviews'
+        verbose_name_plural = 'Menu Reviews'
+        unique_together = ['reviewer_name', 'menu']
+        indexes = [
+            Index(fields=['menu',], name='main_app_menu_review_menu_id')
+        ]
         
+              
+# Task 06 Rating and Review Content
+       
