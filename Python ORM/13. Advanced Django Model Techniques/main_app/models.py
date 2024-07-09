@@ -6,6 +6,19 @@ from django.db import models
 
 # Create your models here.
 
+class ReviewMixin(models.Model):
+    review_content = models.TextField()
+    
+    rating = models.PositiveIntegerField(
+        validators=[
+            MaxLengthValidator(5)
+        ]
+    )
+    
+    class Meta:
+        abstract = True
+        ordering = ['-rating']
+
 
 # Task 01 Restaurant
 class Restaurant(models.Model):
@@ -55,7 +68,7 @@ class Menu(models.Model):
     
 # Task 03 Restaurant Review    
 
-class RestaurantReview(models.Model):
+class RestaurantReview(ReviewMixin):
     reviewer_name = models.CharField(
         max_length=100
     )
@@ -65,17 +78,17 @@ class RestaurantReview(models.Model):
         on_delete=models.CASCADE
     )
     
-    review_content = models.TextField()
+    # review_content = models.TextField()
     
-    rating = models.PositiveIntegerField(
-        validators=[
-            MaxLengthValidator(5)
-        ]
-    )
+    # rating = models.PositiveIntegerField(
+    #     validators=[
+    #         MaxLengthValidator(5)
+    #     ]
+    # )
     
-    class Meta:
+    class Meta(ReviewMixin.Meta):
         abstract = True
-        ordering = ['-rating']
+        # ordering = ['-rating']
         verbose_name = 'Restaurant Reviews'
         verbose_name_plural = 'Restaurant Reviews'
         unique_together = ['reviewer_name', 'restaurant']
@@ -98,7 +111,7 @@ class FoodCriticRestaurantReview(RestaurantReview):
    
    
 # Task 05 Menu Review
-class MenuReview(models.Model):
+class MenuReview(ReviewMixin):
     reviewer_name = models.CharField(
         max_length=100
     )        
@@ -108,16 +121,16 @@ class MenuReview(models.Model):
         on_delete=models.CASCADE
     )
     
-    review_content = models.TextField()
+    # review_content = models.TextField()
     
-    rating = models.PositiveIntegerField(
-        validators=[
-            MaxLengthValidator(5)
-        ]
-    )
+    # rating = models.PositiveIntegerField(
+    #     validators=[
+    #         MaxLengthValidator(5)
+    #     ]
+    # )
     
-    class Meta:
-        ordering = ['-rating']
+    class Meta(ReviewMixin.Meta):
+        # ordering = ['-rating']
         verbose_name = 'Menu Reviews'
         verbose_name_plural = 'Menu Reviews'
         unique_together = ['reviewer_name', 'menu']
