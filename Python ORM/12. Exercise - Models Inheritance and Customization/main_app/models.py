@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ValidationError
 
 # Create your models here.
 class BaseCharacter(models.Model):
@@ -176,4 +177,16 @@ class Student(models.Model):
         max_length=100,
     )           
     
-    student_id = StudentIDField()    
+    student_id = StudentIDField() 
+    
+    
+class MaskedCreditCardField(models.CharField):
+    pass  
+    
+    
+class CreditCard(models.Model):
+    card_owner = models.CharField(
+        max_length=100,
+    )  
+    
+    card_number = models.MaskedCreditCardField()     
