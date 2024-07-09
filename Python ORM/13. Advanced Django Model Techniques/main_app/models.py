@@ -31,3 +31,16 @@ class Restaurant(models.Model):
             MaxLengthValidator(5,"Rating cannot exceed 5.00.")
         ]
     )
+    
+    
+class Menu(models.Model):
+    name = models.CharField(
+        max_length=100,
+    )    
+    
+    description = models.TextField()
+    
+    restaurant = models.ForeignKey(
+        = models.Restarant()
+        on_delete=models.CASCADE
+    )
