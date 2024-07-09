@@ -164,5 +164,16 @@ class StudentIDField(models.PositiveIntegerField):
         except ValueError:
             raise ValueError("Invalid Input for student ID")      
         
+    def get_prep_value(self, value):
+        cleaned_value = self.to_python(value)
+        
+        if cleaned_value <= 0:
+            raise ValidationError("ID cannot be less than or equal to zero") 
         
         
+class Student(models.Model):
+    name = models.CharField(
+        max_length=100,
+    )           
+    
+    student_id = StudentIDField()    
