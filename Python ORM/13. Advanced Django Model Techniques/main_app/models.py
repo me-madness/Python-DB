@@ -122,7 +122,7 @@ class MenuReview(models.Model):
         verbose_name_plural = 'Menu Reviews'
         unique_together = ['reviewer_name', 'menu']
         indexes = [
-            Index(fields=['menu',], name='main_app_menu_review_menu_id')
+            models.Index(fields=['menu',], name='main_app_menu_review_menu_id')
         ]
         
               
