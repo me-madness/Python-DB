@@ -1,11 +1,14 @@
+from django.core.validators import MinLengthValidator
 from django.db import models
-
+# from django.core.exceptions import ValidationError
 # Create your models here.
 
 class Restaurant(models.Model):
     name = models.CharField(
         max_length=100,
-        
+        validators=[
+            MinLengthValidator
+        ]
     #  "Name must be at least 2 characters long."   
     #  "Name cannot exceed 100 characters."   
     )
