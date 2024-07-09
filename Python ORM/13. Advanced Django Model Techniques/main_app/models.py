@@ -5,6 +5,8 @@ from django.db import models
 
 # Create your models here.
 
+
+# Task 01 Restaurant
 class Restaurant(models.Model):
     name = models.CharField(
         max_length=100,
@@ -34,6 +36,7 @@ class Restaurant(models.Model):
     )
     
     
+# Task 02 Menu    
 class Menu(models.Model):
     name = models.CharField(
         max_length=100,
@@ -47,3 +50,20 @@ class Menu(models.Model):
         to=Restaurant,
         on_delete=models.CASCADE
     )
+    
+    
+# Task 03 Restaurant Review    
+
+class RestaurantReview(models.Model):
+    reviewer_name = models.CharField(
+        max_length=100
+    )
+    
+    restaurant = models.ForeignKey(
+        to=Restaurant,
+        on_delete=models.CASCADE
+    )
+    
+    review_content = models.TextField()
+    
+    rating = models.PositiveIntegerField(5)
