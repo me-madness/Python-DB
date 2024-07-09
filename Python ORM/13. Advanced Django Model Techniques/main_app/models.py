@@ -78,3 +78,21 @@ class RestaurantReview(models.Model):
         verbose_name_plural = 'Restaurant Reviews'
         unique_together = ['reviewer_name', 'restaurant']
         
+        
+# Task 04 Restaurant Review Types       
+class RegularRestaurantReview(models.Model):
+    pass
+
+
+class FoodCriticRestaurantReview(models.Model):
+    food_critic_cuisine_area = models.CharField(
+        max_length=100
+    )
+    
+    class Meta:
+        ordering = ['-rating']
+        human_readable_name = 'Food Critic Review'
+        human_readable_plural_name = 'Food Critic Review'
+        unique_together = ['reviewer_name', 'restaurant']
+        
+        
