@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MinValueValidator, EmailValidator
+from django.core.validators import MinValueValidator, RegexValidator
 from main_app.validators import ValidateName
 from django.core.exceptions import ValidationError
 # Create your models here.
@@ -25,8 +25,10 @@ class Customer(models.Model):
     )
     
     phone_number = models.CharField(
+        max_length=13,
         validators=[
-            ("Phone number must start with a '+359' followed by 9 digits")
+            RegexValidator(regex=r'^\+359\d{9}$', 
+                           message="Phone number must start with a '+359' followed by 9 digits")
         ]
     )
     
