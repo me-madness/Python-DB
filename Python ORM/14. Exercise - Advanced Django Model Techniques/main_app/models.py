@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MinValueValidator, RegexValidator
+from django.core.validators import MinValueValidator, RegexValidator, MinLengthValidator
 from main_app.validators import ValidateName, validate_name
 from django.core.exceptions import ValidationError
 # Create your models here.
@@ -40,24 +40,34 @@ class Customer(models.Model):
     
 # Task 02.Media
 class BaseMedia(models.Model):
+    class Meta:
+        abstract = True
+        ordering = ["-created_at", "title"]
+        
     title = models.CharField(
-        max_length=100
+        max_length=100,
     )    
     
     description = models.TextField()
     
     genre = models.CharField(
-        max_length=50
+        max_length=50,
     )
     
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+    )
     
     
-class Book(models.Model):
+class Book(BaseMedia):
+    class Meta(BaseMedia.Meta):
+        verbose_name = "Model Book"
+        verbose_name_plural = "Models of type - Book"
+        
     author = models.CharField(
         max_length=100,
         validators=[
-            MinValueValidator(5, message="Author must be at least 5 characters long")
+            MinLengthValidator(5, message="Author must be at least 5 characters long")
         ]
     )  
     
@@ -65,7 +75,7 @@ class Book(models.Model):
         max_length=20,
         unique=True,
         validators=[
-            MinValueValidator(6, message="ISBN must be at least 6 characters long")
+            MinLengthValidator(6, message="ISBN must be at least 6 characters long")
         ]
     )  
     
@@ -74,7 +84,7 @@ class Movie(models.Model):
     director = models.CharField(
         max_length=100,
         validators=[
-            MinValueValidator(8, message="Director must be at least 8 characters long")
+            MinLengthValidator(8, message="Director must be at least 8 characters long")
         ]
     ) 
     
@@ -83,7 +93,7 @@ class Music(models.Model):
     artist = models.CharField(
         max_length=100,
         validators=[
-            MinValueValidator(9, message="Artist must be at least 9 characters long")
+            MinLengthValidator(9, message="Artist must be at least 9 characters long")
         ]
     ) 
     
