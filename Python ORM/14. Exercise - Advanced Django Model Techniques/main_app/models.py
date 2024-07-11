@@ -148,7 +148,40 @@ class DiscountedProduct(Product):
   
   
 # Task 04.Superhero Universe
+class Hero(models.Model):
+    name = models.CharField(
+        max_length=100,
+    )
+    
+    hero_title = models.CharField(
+        max_length=100,
+    )
+    
+    energy = models.PositiveIntegerField()
+    
+    
+class SpiderHero(Hero):
+    class Meta:
+        proxy = True
+        
+    def swing_from_buildings(self) -> str:
+        if self.energy - 80 >= 0:
+            self.energy -= 80 if self.energy - 80 > 0 else 79 
+            self.save()
+            return f"{self.name} as Spider Hero is out of web shooter fluid"    
+        return f"{self.name} as Spider Hero swings from buildings using web shooters"
 
 
+class FlashHero(Hero):
+    class Meta:
+        proxy = True    
 
+    def run_at_super_speed(self) -> str:
+        if self.energy - 65 >= 0:
+            self.energy -= 65 if self.energy - 65 > 0 else 64 
+            self.save()
+            return f"{self.name} as Flash Hero needs to recharge the speed force"   
+        return f"{self.name} as Flash Hero runs at lightning speed, saving the day"
+    
+    
 # Task 05.*Vector Searching         
