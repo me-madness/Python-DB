@@ -129,7 +129,7 @@ class Product(models.Model):
         return f"Product: {self.name}"
     
     
-class DiscountProduct(Product):
+class DiscountedProduct(Product):
     class Meta:
         proxy = True    
   
