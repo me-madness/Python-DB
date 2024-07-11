@@ -1,5 +1,7 @@
+from ast import Index
 from decimal import Decimal
 from django.db import models
+from django.contrib.postgres.search import SearchVectorField
 from django.core.validators import MinValueValidator, RegexValidator, MinLengthValidator
 from main_app.validators import ValidateName, validate_name
 from django.core.exceptions import ValidationError
@@ -186,3 +188,17 @@ class FlashHero(Hero):
     
     
 # Task 05.*Vector Searching         
+class Document(models.Model):
+    class Meta:
+        indexes = [
+            models.Index(fields=["search_vector"])
+        ]
+    title = models.CharField(
+        max_length=200,
+    )
+    
+    content = models.TextField()
+    
+    search_vector = SearchVectorField(
+        null=True,
+    )
