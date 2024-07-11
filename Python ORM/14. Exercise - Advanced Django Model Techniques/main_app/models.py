@@ -169,8 +169,8 @@ class SpiderHero(Hero):
         if self.energy - 80 >= 0:
             self.energy -= 80 if self.energy - 80 > 0 else 79 # max(1, self.energy - 80)
             self.save()
-            return f"{self.name} as Spider Hero is out of web shooter fluid"    
-        return f"{self.name} as Spider Hero swings from buildings using web shooters"
+            return f"{self.name} as Spider Hero swings from buildings using web shooters"
+        return f"{self.name} as Spider Hero is out of web shooter fluid"    
 
 
 class FlashHero(Hero):
@@ -181,8 +181,8 @@ class FlashHero(Hero):
         if self.energy - 65 >= 0:
             self.energy -= 65 if self.energy - 65 > 0 else 64 
             self.save()
-            return f"{self.name} as Flash Hero needs to recharge the speed force"   
-        return f"{self.name} as Flash Hero runs at lightning speed, saving the day"
+            return f"{self.name} as Flash Hero runs at lightning speed, saving the day"
+        return f"{self.name} as Flash Hero needs to recharge the speed force"   
     
     
 # Task 05.*Vector Searching         
