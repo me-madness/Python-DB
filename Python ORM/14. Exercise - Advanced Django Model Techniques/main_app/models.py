@@ -3,6 +3,7 @@ from django.db import models
 from django.core.validators import MinValueValidator, RegexValidator, MinLengthValidator
 from main_app.validators import ValidateName, validate_name
 from django.core.exceptions import ValidationError
+from main_app.mixins import RechargeEnergyMixin
 # Create your models here.
 
 
@@ -148,7 +149,7 @@ class DiscountedProduct(Product):
   
   
 # Task 04.Superhero Universe
-class Hero(models.Model):
+class Hero(models.Model, RechargeEnergyMixin):
     name = models.CharField(
         max_length=100,
     )
@@ -166,7 +167,7 @@ class SpiderHero(Hero):
         
     def swing_from_buildings(self) -> str:
         if self.energy - 80 >= 0:
-            self.energy -= 80 if self.energy - 80 > 0 else 79 
+            self.energy -= 80 if self.energy - 80 > 0 else 79 # max(1, self.energy - 80)
             self.save()
             return f"{self.name} as Spider Hero is out of web shooter fluid"    
         return f"{self.name} as Spider Hero swings from buildings using web shooters"
