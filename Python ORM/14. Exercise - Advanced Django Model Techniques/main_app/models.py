@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator, RegexValidator
-from main_app.validators import ValidateName
+from main_app.validators import ValidateName, validate_name
 from django.core.exceptions import ValidationError
 # Create your models here.
 
@@ -10,7 +10,8 @@ class Customer(models.Model):
     name = models.CharField(
         max_length=100,
         validators=[
-            ValidateName("Name can only contain letters and spaces")
+            validate_name,
+            # ValidateName("Name can only contain letters and spaces")
         ]
     )
     

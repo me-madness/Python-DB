@@ -7,7 +7,7 @@ def validate_name(value):
             raise ValidationError("Name can only contain letters and spaces")
         
 
-# Second Option - Much Better        
+# Second Option - Much Better - but it's not work the migrations       
 class ValidateName:
     def __init__(self, message: str):
         self.message = message
