@@ -33,7 +33,5 @@ class Customer(models.Model):
     )
     
     website_url = models.URLField(
-        validators=[
-            ("Enter a valid URL")
-        ]
+        error_messages={'invalid': 'Enter a valid URL'}
     )
