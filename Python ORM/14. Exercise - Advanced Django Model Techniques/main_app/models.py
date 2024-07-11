@@ -67,7 +67,7 @@ class Book(BaseMedia):
     author = models.CharField(
         max_length=100,
         validators=[
-            MinLengthValidator(5, message="Author must be at least 5 characters long")
+            MinLengthValidator(5, message="Author must be at least 5 characters long"),
         ]
     )  
     
@@ -75,25 +75,33 @@ class Book(BaseMedia):
         max_length=20,
         unique=True,
         validators=[
-            MinLengthValidator(6, message="ISBN must be at least 6 characters long")
+            MinLengthValidator(6, message="ISBN must be at least 6 characters long"),
         ]
     )  
     
     
-class Movie(models.Model):
+class Movie(BaseMedia):
+    class Meta(BaseMedia.Meta):
+        verbose_name = "Model Movie"
+        verbose_name_plural = "Model ofm type - Movie"
+        
     director = models.CharField(
         max_length=100,
         validators=[
-            MinLengthValidator(8, message="Director must be at least 8 characters long")
+            MinLengthValidator(8, message="Director must be at least 8 characters long"),
         ]
     ) 
     
     
-class Music(models.Model):
+class Music(BaseMedia):
+    class Meta(BaseMedia.Meta):
+        verbose_name = "Model Music"
+        verbose_name_plural = "Model ofm type - Music"
+        
     artist = models.CharField(
         max_length=100,
         validators=[
-            MinLengthValidator(9, message="Artist must be at least 9 characters long")
+            MinLengthValidator(9, message="Artist must be at least 9 characters long"),
         ]
     ) 
     
