@@ -36,3 +36,56 @@ class Customer(models.Model):
     website_url = models.URLField(
         error_messages={'invalid': 'Enter a valid URL'}
     )
+    
+    
+# Task 02.Media
+class BaseMedia(models.Model):
+    title = models.CharField(
+        max_length=100
+    )    
+    
+    description = models.TextField()
+    
+    genre = models.CharField(
+        max_length=50
+    )
+    
+    created_at = models.DateTimeField()
+    
+    
+class Book(models.Model):
+    author = models.CharField(
+        max_length=100,
+        validators=[
+            MinValueValidator(5, message="Author must be at least 5 characters long")
+        ]
+    )  
+    
+    isbn = models.CharField(
+        max_length=20,
+        unique=True,
+        validators=[
+            MinValueValidator(6, message="ISBN must be at least 6 characters long")
+        ]
+    )  
+    
+    
+class Movie(models.Model):
+    director = models.CharField(
+        max_length=100,
+        validators=[
+            MinValueValidator(8, message="Director must be at least 8 characters long")
+        ]
+    ) 
+    
+    
+class Music(models.Model):
+    artist = models.CharField(
+        max_length=100,
+        validators=[
+            MinValueValidator(9, message="Artist must be at least 9 characters long")
+        ]
+    ) 
+    
+    
+            
