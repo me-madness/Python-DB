@@ -7,7 +7,7 @@ def validate_name(value):
             raise ValidationError("Name can only contain letters and spaces")
         
 
-# Second Option - Much Better - but it's not work the migrations       
+# Second Option - Much Better        
 class ValidateName:
     def __init__(self, message: str):
         self.message = message
@@ -15,6 +15,13 @@ class ValidateName:
     def __call__(self, value):
         for char in value:
             if not(char.isalpha() or char.isspace()):
-                raise ValidationError(self.message)    
+                raise ValidationError(self.message) 
+            
+    def deconstruct(self):
+        return(
+            'main_app.validators.ValidName',
+            (self.message, ),
+            {}
+        )           
                 
                                 
