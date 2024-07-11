@@ -16,14 +16,12 @@ class Customer(models.Model):
     
     age = models.PositiveIntegerField(
         validators=[
-            MinValueValidator(18, message="Age must be greater than or equal to 18")
+            MinValueValidator(18, message="Age must be greater than or equal to 18"),
         ]
     )
     
     email = models.EmailField(
-        validators=[
-            EmailValidator("Enter a valid email address") 
-        ]
+        error_messages={'Invalid': "Enter a valid email address"}
     )
     
     phone_number = models.CharField(
