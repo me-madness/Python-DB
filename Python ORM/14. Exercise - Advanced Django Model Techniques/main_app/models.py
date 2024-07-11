@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.db import models
 from django.core.validators import MinValueValidator, RegexValidator, MinLengthValidator
 from main_app.validators import ValidateName, validate_name
@@ -117,11 +118,33 @@ class Product(models.Model):
         decimal_places=2,
     )
     
+    def calculate_tax(self) -> Decimal:
+        return self.price * Decimal(0.08)
+    
+    @staticmethod
+    def calculate_shipping_cost(weight: Decimal) -> Decimal:
+        return weight * Decimal(2.00)
+    
+    def format_product_name(self) -> str:
+        return f"Product: {self.name}"
+    
     
 class DiscountProduct(Product):
     class Meta:
         proxy = True    
   
+    def calculate_price_without_discount(self) -> Decimal:
+        return self.price * Decimal(1.20)
+    
+    def calculate_tax(self) -> Decimal:
+        return self.price * Decimal(0.05)
+    
+    @staticmethod
+    def calculate_shipping_cost(weight: Decimal) -> Decimal:
+        return weight * Decimal(1.50)
+  
+    def format_product_name(self) -> str:
+        return f"Discounted Product: {self.name}"
   
   
 # Task 04.Superhero Universe
