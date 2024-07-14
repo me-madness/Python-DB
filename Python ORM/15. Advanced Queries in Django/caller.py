@@ -6,6 +6,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
 # Import your models
+from main_app.managers import ProductManager
 from main_app.models import Product, Category, Customer, Order, OrderProduct
 
 
