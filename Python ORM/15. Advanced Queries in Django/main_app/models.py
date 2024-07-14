@@ -1,5 +1,5 @@
 from django.db import models
-
+from main_app.managers import ProductManager
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -11,6 +11,8 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     is_available = models.BooleanField(default=True)
+
+    object = ProductManager()
 
     def __str__(self):
         return f"{self.category.name}: {self.name}"
@@ -31,6 +33,3 @@ class OrderProduct(models.Model):
     quantity = models.PositiveIntegerField()
 
 
-# Task 01. Available Products
-class ProductManager(Product):
-    def 
