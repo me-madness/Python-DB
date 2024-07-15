@@ -19,3 +19,6 @@ class RealEstateListingManager(models.Manager):
         return self.values('location').annotate(
             location_count=Count('location')
         ).order_by('-location_count', 'location')[:2]
+        
+        
+# Task 02.Video Games Library        
