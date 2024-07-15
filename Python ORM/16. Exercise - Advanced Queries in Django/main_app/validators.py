@@ -19,7 +19,7 @@ class RangeValueValidator:
     
     @message.setter
     def message(self, value):
-        if not value:
+        if value is None:
             self.__message = f"The rating must be between {self.min_value:.1f} and {self.max_value:.1f}" 
         else:    
             self.__message = value
