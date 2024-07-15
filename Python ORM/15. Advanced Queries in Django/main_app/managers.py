@@ -12,4 +12,4 @@ class ProductManager(models.Manager):
     
     # Task 02. Product Quantity Ordered
     def product_quantity_ordered():
-        return f"Quantity ordered of {product_name1}: {total_ordered_quantity1}"
+        # return f"Quantity ordered of {product_name1}: {total_ordered_quantity1}"
