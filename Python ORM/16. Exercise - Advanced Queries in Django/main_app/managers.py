@@ -1,6 +1,6 @@
 from decimal import Decimal
 from django.db import models
-from django.db.models import QuerySet
+from django.db.models import QuerySet, Count
 
 
 # Task 01.Real Estate Listing
@@ -13,4 +13,9 @@ class RealEstateListingManager(models.Manager):
         return self.filter(price__range=[min_price, max_price])
     
     def with_bedrooms(self, bedrooms_count: int) -> QuerySet:
-        return self.filter()
+        return self.filter(bedrooms=bedrooms_count)
+    
+    def popular_locations(self) -> QuerySet:
+        return self.values('location').annotate(
+            location_count=Count('location')
+        ).order_by('-location_count', 'location')[:2]
