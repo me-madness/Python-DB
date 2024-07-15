@@ -6,4 +6,4 @@ from django.db.models import QuerySet
 class RealEstateListingManager(models.Manager):
 
     def by_property_type(self, property_type: str) -> QuerySet:
-        
+        return self.filter(property_type=property_type)
