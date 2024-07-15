@@ -1,5 +1,5 @@
 from django.db import models
-from main_app.managers import RealEstateListingManager
+from main_app.managers import RealEstateListingManager, VideoGameManager
 from main_app.validators import RangeValueValidator
 
 # Create your models here.
@@ -44,6 +44,8 @@ class VideoGame(models.Model):
             RangeValueValidator(0, 10)
         ]
     )
+
+    objects = VideoGameManager()
 
     def __str__(self):
         return self.title

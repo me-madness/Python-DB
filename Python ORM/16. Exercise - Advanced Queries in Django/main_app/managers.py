@@ -28,7 +28,7 @@ class VideoGameManager(models.Manager):
         return self.filter(genre=genre)
     
     def recently_released_games(self, year: int) -> QuerySet:
-        return self.filter(year__gte=year)
+        return self.filter(release_year__gte=year)
     
     def highest_rated_game(self) -> QuerySet:
         # First option with aggregate
@@ -39,7 +39,7 @@ class VideoGameManager(models.Manager):
         return self.annotate(max_rating=Max('rating')).order_by('-max_rating').first()
     
     def lowest_rated_game(self) -> QuerySet:
-        return self.annotate(min_rating=Min('rating')).order_by('-min_rating').first()
+        return self.annotate(min_rating=Min('rating')).order_by('min_rating').first()
 
     
     def average_rating(self) -> str:
