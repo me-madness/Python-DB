@@ -1,6 +1,7 @@
 from django.db import models
 from main_app.managers import RealEstateListingManager, VideoGameManager
 from main_app.validators import RangeValueValidator
+from django.db.models import QuerySet
 
 # Create your models here.
 
@@ -58,6 +59,15 @@ class BillingInfo(models.Model):
 class Invoice(models.Model):
     invoice_number = models.CharField(max_length=20, unique=True)
     billing_info = models.OneToOneField(BillingInfo, on_delete=models.CASCADE)
+
+    def get_invoices_with_prefix(self, prefix: str) -> QuerySet:
+        return self.objects.filter(invoice_number__startwith=prefix)
+    
+    def get_invoices_sorted_by_number(self) -> QuerySet:
+        return self.objects.order_by('invoiced_number')
+    
+    def get_invoice_with_billing_info(self, invoice_number: str):
+        return self.objects.filter(invoice_number=invoice_number) 
 
 
 class Technology(models.Model):
