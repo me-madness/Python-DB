@@ -4,3 +4,7 @@ from django.db import models
 
 class DirectorModel(models.Model):
     pass
+
+
+class ActorModel(models.Model):
+    pass
