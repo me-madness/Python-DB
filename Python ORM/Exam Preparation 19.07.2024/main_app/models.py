@@ -8,3 +8,7 @@ class DirectorModel(models.Model):
 
 class ActorModel(models.Model):
     pass
+
+
+class MovieModel(models.Model):
+    pass
