@@ -8,7 +8,8 @@ django.setup()
 
 # Import your models here
 
-from main_app.models import Profile
+from main_app.models import Profile, Order
+
 
 
 # Create queries within functions
@@ -31,6 +32,34 @@ def get_profiles(search_string=None) -> str:
         f"Profile: {p.full_name}, email: {p.email}, phone_number: {p.phone_number}, orders: {p.orders.count()}"
         for p in profiles       
     )
+       
+# print(get_profiles("ra"))    
+
+def get_loyal_profiles() -> str:
+    profiles = Profile.objects.get_regular_customers()
     
+    if not profiles.exists():
+        return ""
     
-print(get_profiles("ra"))    
+    return "\n".join(
+        f"Profile: {p.full_name}, orders: {p.orders.count()}"
+        for p in profiles
+    )
+    
+# print(get_loyal_profiles())    
+
+def get_last_sold_products() -> str:
+    last_order = Order.objects.prefetch_related('products').last()
+    
+    if last_order is None or not last_order.products.exists():
+        return ""
+    
+    # First Option
+    # products = ', '.join([p.name for p in last_order.products.order_by('name')]) 
+    
+    # Second Option
+    products = ', '.join(last_order.products.order_by('name').values_list('name', flat=True))
+    
+    return f"last sold products: {products}"
+
+# print(get_last_sold_products())
