@@ -23,7 +23,7 @@ def get_profiles(search_string=None) -> str:
         Q(email__icontains=search_string)
             |
         Q(phone_number__icontains=search_string)
-    )
+    ).order_by('full_name')
     
     if not profiles.exists():
         return ""
