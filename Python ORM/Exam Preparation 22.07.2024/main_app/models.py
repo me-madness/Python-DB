@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinLengthValidator, MinValueValidator
+from main_app.managers import ProfileManager
 
 
 # Create your models here.
@@ -31,6 +32,8 @@ class Profile(DateTime):
     is_active = models.BooleanField(
         default=False,
     )
+    
+    objects = ProfileManager()
     
     
 class Product(DateTime):
