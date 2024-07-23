@@ -12,8 +12,8 @@ class OnlyLettersValidator:
         
         
     def deconstruct(self):
-        return {
-            'Fruitipedia.fruits.validators.OnlyLettersValidator',
+        return (
+            'fruits.validators.OnlyLettersValidator',
             (),
             {'message': self.message}
-        }        
+        )        
