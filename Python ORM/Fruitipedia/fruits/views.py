@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from fruits.models import Fruit
+from fruits.forms import CategoryAddForm
 
 
 # Create your views here.
@@ -33,4 +34,10 @@ def delete_view(request, pk):
 
 
 def create_category(request):
-    return render(request, 'categories/create-category.html')
+    form = CategoryAddForm()
+    
+    context = {
+        "form": form,
+    }
+        
+    return render(request, 'categories/create-category.html', context)
