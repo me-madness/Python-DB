@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from fruits.models import Fruit
 from fruits.forms import AddFruitForm, CategoryAddForm
+from django.views.generic.edit import CreateView
 
 
 # Create your views here.

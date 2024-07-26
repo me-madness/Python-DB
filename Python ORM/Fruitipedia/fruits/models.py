@@ -10,6 +10,9 @@ class Category(models.Model):
         blank=False,
     )
     
+    def __str__(self):
+        return self.name
+    
     
 class Fruit(models.Model):
     name = models.CharField(
