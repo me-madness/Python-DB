@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 from fruits.models import Fruit
-from fruits.forms import CategoryAddForm
+from fruits.forms import AddFruitForm, CategoryAddForm
 
 
 # Create your views here.
@@ -16,9 +17,14 @@ def dashboard(request):
     }
     return render(request, 'common/dashboard.html', context)
 
-
-def create_view(request):
-    return render(request, 'fruits/create-fruit.html')
+class CReateFruitView(CreateView):
+    model = Fruit
+    form_class = AddFruitForm
+    template_name = 'fruits/create-fruit.html'
+    success_url = reverse_lazy('dashboard')
+    
+# def create_view(request):
+#     return render(request, 'fruits/create-fruit.html')
 
 
 def edit_view(request, pk):
@@ -34,8 +40,15 @@ def delete_view(request, pk):
 
 
 def create_category(request):
-    form = CategoryAddForm()
+    if request.method == "GET":
+        form = CategoryAddForm()
+    else:
+        form = CategoryAddForm(request.POST)
     
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+        
     context = {
         "form": form,
     }
