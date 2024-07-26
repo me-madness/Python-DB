@@ -17,7 +17,7 @@ def dashboard(request):
     }
     return render(request, 'common/dashboard.html', context)
 
-class CReateFruitView(CreateView):
+class CreateFruitView(CreateView):
     model = Fruit
     form_class = AddFruitForm
     template_name = 'fruits/create-fruit.html'
