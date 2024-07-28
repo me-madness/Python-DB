@@ -47,3 +47,6 @@ class Fruit(models.Model):
         null=True
     )
     
+    
+class newModel(models.Model):
+    pass    
