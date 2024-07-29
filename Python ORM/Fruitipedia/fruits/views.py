@@ -33,6 +33,12 @@ def edit_view(request, pk):
 
 
 def details_view(request, pk):
+    fruit = Fruit.objects.get(pk=pk)
+    
+    context = {
+        "fruit": fruit
+    }
+    
     return render(request, 'fruits/details-fruit.html')
 
 
