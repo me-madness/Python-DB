@@ -38,7 +38,7 @@ def edit_view(request, pk):
         
         if form.is_valid():
             form.save()
-            redirect('dashboard')
+            return redirect('dashboard')
     
     context = {
         "fruit": fruit,
