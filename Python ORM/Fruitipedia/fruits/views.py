@@ -34,9 +34,14 @@ def edit_view(request, pk):
     if request.method == "GET":
         form = EditFruitForm(instance=fruit)
     else:
-        form = ""
+        form = EditFruitForm(request.POST, instance=fruit)
+        
+        if form.is_valid():
+            form.save()
+            redirect('dashboard')
     
     context = {
+        "fruit": fruit,
         "form": form,
     }
         

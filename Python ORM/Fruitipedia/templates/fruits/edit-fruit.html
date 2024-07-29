@@ -4,7 +4,7 @@
 <section id="edit">
   <div class="form">
     <h2>Edit Fruit</h2>
-    <form class="edit-form">
+    <form class="edit-form" method="POST" action="{% url 'edit_fruit' fruit.pk %}">
       {{ form }}
       {% csrf_token %}
       <button type="submit">Edit</button>
