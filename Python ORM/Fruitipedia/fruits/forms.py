@@ -43,4 +43,10 @@ class EditFruitForm(BaseFruitForm):
     pass
 
 class DeleteFruitForm(BaseFruitForm):
-    pass # TODO: make fields disabled
+    
+    # TODO: make fields disabled
+    def __init__(self,*args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.disabled = True
+    
