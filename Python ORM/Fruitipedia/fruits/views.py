@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from fruits.models import Fruit
-from fruits.forms import AddFruitForm, CategoryAddForm
+from fruits.forms import AddFruitForm, CategoryAddForm, EditFruitForm
 from django.views.generic.edit import CreateView
 
 
@@ -29,7 +29,18 @@ class CreateFruitView(CreateView):
 
 
 def edit_view(request, pk):
-    return render(request, 'fruits/edit-fruit.html')
+    fruit = Fruit.objects.get(pk=pk)
+    
+    if request.method == "GET":
+        form = EditFruitForm(instance=fruit)
+    else:
+        form = ""
+    
+    context = {
+        "form": form,
+    }
+        
+    return render(request, 'fruits/edit-fruit.html', context)
 
 
 def details_view(request, pk):
@@ -39,7 +50,7 @@ def details_view(request, pk):
         "fruit": fruit
     }
     
-    return render(request, 'fruits/details-fruit.html')
+    return render(request, 'fruits/details-fruit.html', context)
 
 
 def delete_view(request, pk):
