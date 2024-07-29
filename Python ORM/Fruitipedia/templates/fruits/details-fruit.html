@@ -9,7 +9,7 @@
     <p id="details-title">Name: {{ fruit.name }}</p>
     <div id="info-wrapper">
       <div id="details-description">
-        <p id="category">Category: edible fruit</p>
+        <p id="category">Category: {{ fruit.category.name }}</p>
         <!-- fruit description -->
         <p>
           {{ fruit.description }}
@@ -18,12 +18,7 @@
         <p id="nutrition">Nutrition</p>
         <!-- fruit nutrition details -->
         <p id="details-nutrition">
-          Raw pineapple pulp is 86% water, 13% carbohydrates, 0.5% protein, and
-          contains negligible fat (table). In a 100-gram reference amount, raw
-          pineapple supplies 209 kilojoules (50 kilocalories) of food energy,
-          and is a rich source of manganese (44% Daily Value, DV) and vitamin C
-          (58% DV), but otherwise contains no micronutrients in significant
-          amounts.
+         {{ fruit.nutrition }}
         </p>
       </div>
 
