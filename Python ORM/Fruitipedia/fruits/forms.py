@@ -41,3 +41,6 @@ class AddFruitForm(BaseFruitForm):
 
 class EditFruitForm(BaseFruitForm):
     pass
+
+class DeleteFruitForm(BaseFruitForm):
+    pass # TODO: make fields disabled

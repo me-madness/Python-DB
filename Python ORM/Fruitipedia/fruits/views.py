@@ -1,8 +1,8 @@
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from fruits.models import Fruit
-from fruits.forms import AddFruitForm, CategoryAddForm, EditFruitForm
-from django.views.generic.edit import CreateView
+from fruits.forms import AddFruitForm, CategoryAddForm, EditFruitForm, DeleteFruitForm
+from django.views.generic.edit import CreateView, DeleteView
 
 
 # Create your views here.
@@ -58,8 +58,17 @@ def details_view(request, pk):
     return render(request, 'fruits/details-fruit.html', context)
 
 
-def delete_view(request, pk):
-    return render(request, 'fruits/delete-fruit.html')
+# def delete_view(request, pk):
+#     return render(request, 'fruits/delete-fruit.html')
+
+
+class DeleteFruitView(DeleteView):
+    model = Fruit
+    form_class = DeleteFruitForm
+    template_name = 'fruits/delete-fruit.html'
+    success_url = reverse_lazy('dashboard')
+    
+    
 
 
 def create_category(request):
