@@ -1,7 +1,7 @@
 import os
 import django
 from decimal import Decimal
-from django.db.models import Q, Count, F
+from django.db.models import Q, Count, F, Case, When
 from main_app.models import Product
 
 # Set up Django
@@ -98,4 +98,27 @@ def apply_discounts() -> str:
 
 
 def complete_order() -> str:
-    pass
+    order = Order.objects.filter(
+        is_completed=False
+    ).order_by(
+        'creation_date'
+    ).first()
+    
+    if not order:
+        return ""
+    
+    for product in order.products.all():
+        product.in_stock -= 1
+        
+        if product.in_stock == 0:
+            product.is_available = False
+            
+        product.save()
+        
+    Product.objects.filter(order=order).update(
+        in_stock=F('in_stock') -1,
+        is_available=Case(
+            When(in_stock=1)
+        )
+    )    
+            
