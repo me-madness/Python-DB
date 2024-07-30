@@ -76,4 +76,8 @@ def get_top_products() -> str:
         'name'
     )[:5]
     
-    if
+    if not top_products.exists():
+        return ""
+    
+    product_lines = "\n".join(f"{p.name}, sold {p.orders_count} times" for p in top_products)
+    return f"Top products:\n" + product_lines
