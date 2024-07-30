@@ -1,7 +1,7 @@
 import os
 import django
 from decimal import Decimal
-from django.db.models import Q, Count, F, Case, When
+from django.db.models import Q, Count, F, Case, When, Value, BooleanField
 from main_app.models import Product
 
 # Set up Django
@@ -107,18 +107,27 @@ def complete_order() -> str:
     if not order:
         return ""
     
-    for product in order.products.all():
-        product.in_stock -= 1
+    # for product in order.products.all():
+    #     product.in_stock -= 1
         
-        if product.in_stock == 0:
-            product.is_available = False
+    #     if product.in_stock == 0:
+    #         product.is_available = False
             
-        product.save()
+    #     product.save()
         
-    Product.objects.filter(order=order).update(
+    # Product.objects.filter(order=order).update(
+        
+    order.products.update(
         in_stock=F('in_stock') -1,
         is_available=Case(
-            When(in_stock=1)
+            When(in_stock=1, then=Value(False)),
+            default=F('is_available'),
+            output_field=BooleanField()
         )
     )    
-            
+    
+    
+    order.is_completed = True
+    order.save()
+      
+    return "Order has been completed!"        
