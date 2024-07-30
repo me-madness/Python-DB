@@ -83,11 +83,16 @@ def get_top_products() -> str:
     return f"Top products:\n" + product_lines
 
 
-def apply_discounts() -> None:
-    pass
+def apply_discounts() -> str:
+    updated_orders_count = Order.objects.annotate(
+        products_count=Count('products')
+    ).filter(
+        products_count__gt=2,
+        is_completed=False
+    )
 
 
 
 
-def complete_order() -> None:
+def complete_order() -> str:
     pass
