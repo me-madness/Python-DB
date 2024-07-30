@@ -1,6 +1,7 @@
 import os
 import django
-from django.db.models import Q, Count
+from decimal import Decimal
+from django.db.models import Q, Count, F
 from main_app.models import Product
 
 # Set up Django
@@ -89,9 +90,11 @@ def apply_discounts() -> str:
     ).filter(
         products_count__gt=2,
         is_completed=False
+    ).update(
+        total_prise=F('total_price') * Decimal(0.90)
     )
 
-
+    return f"Discount applied to {updated_orders_count} orders"
 
 
 def complete_order() -> str:
