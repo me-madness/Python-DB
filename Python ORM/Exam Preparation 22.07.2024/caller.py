@@ -70,5 +70,10 @@ def get_top_products() -> str:
     top_products = Product.objects.annotate(
         orders_count=Count('orders')
     ).filter(
-        
-    )
+        orders_count__gt=0,
+    ).order_by(
+        '-order_count',
+        'name'
+    )[:5]
+    
+    if
