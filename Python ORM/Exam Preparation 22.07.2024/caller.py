@@ -91,7 +91,7 @@ def apply_discounts() -> str:
         products_count__gt=2,
         is_completed=False
     ).update(
-        total_prise=F('total_price') * Decimal(0.90)
+        total_prise=F('total_price') * 0.90
     )
 
     return f"Discount applied to {updated_orders_count} orders"
@@ -101,7 +101,7 @@ def complete_order() -> str:
     order = Order.objects.filter(
         is_completed=False
     ).order_by(
-        '-creation_date'
+        'creation_date'
     ).first()
     
     if not order:
