@@ -72,7 +72,7 @@ def get_top_products() -> str:
     ).filter(
         orders_count__gt=0,
     ).order_by(
-        '-order_count',
+        '-orders_count',
         'name'
     )[:5]
     
