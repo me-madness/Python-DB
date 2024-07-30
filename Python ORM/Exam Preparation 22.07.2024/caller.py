@@ -101,7 +101,7 @@ def complete_order() -> str:
     order = Order.objects.filter(
         is_completed=False
     ).order_by(
-        'creation_date'
+        '-creation_date'
     ).first()
     
     if not order:
