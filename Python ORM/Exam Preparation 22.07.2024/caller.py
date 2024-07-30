@@ -81,3 +81,13 @@ def get_top_products() -> str:
     
     product_lines = "\n".join(f"{p.name}, sold {p.orders_count} times" for p in top_products)
     return f"Top products:\n" + product_lines
+
+
+def apply_discounts() -> None:
+    pass
+
+
+
+
+def complete_order() -> None:
+    pass
