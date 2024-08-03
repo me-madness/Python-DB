@@ -1,36 +1,26 @@
 from django.db import models
 from django.core.validators import MinLengthValidator, MaxValueValidator, MinValueValidator, RegexValidator
+from main_app.validators import OnlyDigitsValidator
 
 
-class DateTime(models.Model):
-    class Meta:
-        abstract = True
-        
+
+
+class Astronaut(models.Model):
     name = models.CharField(
         max_length=120,
         validators=[
             MinLengthValidator(2)
         ]
-    )    
-        
-    updated_at = models.DateTimeField(
-        auto_now_add=True,
     )
-
-class Astronaut(DateTime):
-    # name = models.CharField(
-    #     max_length=120,
-    #     validators=[
-    #         MinLengthValidator(2)
-    #     ]
-    # )
     phone_number = models.CharField(
         max_length=15,
         unique=True,
         validators=[
-            RegexValidator(regex=r'^\d+$', message='Phone number must contain only digits.')
+            # RegexValidator(regex=r'^\d+$', message='Phone number must contain only digits.')
+            OnlyDigitsValidator()      
         ]
     )
+    
     is_active = models.BooleanField(
         default=True,
     )
@@ -46,20 +36,21 @@ class Astronaut(DateTime):
             MinValueValidator(0)
         ]
     )
-    # updated_at = models.DateTimeField(
-    #     auto_now=True,
-    # )
+    
+    updated_at = models.DateTimeField(
+        auto_now=True,
+    )
 
-    # def __str__(self):
-    #     return self.name
+    def __str__(self):
+        return self.name
 
-class Spacecraft(DateTime):
-    # name = models.CharField(
-    #     max_length=120,
-    #     validators=[
-    #         MinLengthValidator(2)
-    #     ]
-    # )
+class Spacecraft(models.Model):
+    name = models.CharField(
+        max_length=120,
+        validators=[
+            MinLengthValidator(2)
+        ]
+    )
     
     manufacturer = models.CharField(
         max_length=100
@@ -78,26 +69,26 @@ class Spacecraft(DateTime):
     )
     launch_date = models.DateField()
     
-    # updated_at = models.DateTimeField(
-    #     auto_now=True,
-    # )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+    )
 
-    # def __str__(self):
-    #     return self.name
+    def __str__(self):
+        return self.name
 
-class Mission(DateTime):
+class Mission(models.Model):
     STATUS_CHOICES = [
         ('Planned', 'Planned'),
         ('Ongoing', 'Ongoing'),
         ('Completed', 'Completed')
     ]
 
-    # name = models.CharField(
-    #     max_length=120,
-    #     validators=[
-    #         MinLengthValidator(2)
-    #     ]
-    # )
+    name = models.CharField(
+        max_length=120,
+        validators=[
+            MinLengthValidator(2)
+        ]
+    )
     description = models.TextField(
         null=True,
         blank=True,
@@ -111,9 +102,9 @@ class Mission(DateTime):
     
     launch_date = models.DateField()
     
-    # updated_at = models.DateTimeField(
-    #     auto_now=True,
-    # )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+    )
     
     spacecraft = models.ForeignKey(
         to=Spacecraft,
@@ -131,9 +122,8 @@ class Mission(DateTime):
         related_name='missions_as_commander'
     )
 
-    # def __str__(self):
-    #     return self.name
-
+    def __str__(self):
+        return self.name
 
 
 
@@ -142,7 +132,7 @@ class Mission(DateTime):
 
 # from django.db import models
 # from django.core.validators import MinLengthValidator,MinValueValidator, RegexValidator 
-# from validators import OnlyDigitsValidator
+# from main_app.validators import OnlyDigitsValidator
 # # Create your models here.
 
 
@@ -160,6 +150,9 @@ class Mission(DateTime):
 #     updated_at = models.DateTimeField(
 #         auto_now_add=True,
 #     )
+    
+#     def __str__(self):
+#         return self.name
    
 
 # class Astronaut(DateTime):
@@ -245,3 +238,4 @@ class Mission(DateTime):
 #         null=True,
 #         related_name="missions_as_commander"
 #     )
+# 
