@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MinLengthValidator,MinValueValidator 
-from validators import OnlyDiggitsValidator
+from validators import OnlyDigitsValidator
 # Create your models here.
 
 class Astronaut(models.Model):
@@ -15,7 +15,7 @@ class Astronaut(models.Model):
         max_length=15,
         unique=True,
         validators=[
-            OnlyDiggitValidator() #Must contain only digits
+            OnlyDigitsValidator()
         ]
     )
     
