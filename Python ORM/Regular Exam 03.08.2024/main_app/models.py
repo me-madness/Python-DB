@@ -38,4 +38,38 @@ class Astronaut(models.Model):
     updated_at = models.DateTimeField(
         auto_now_add=True,
     )
+   
+   
+class Spacecraft(models.Model):
+    name = models.CharField(
+        max_length=120,
+        validators=[
+            MinLengthValidator(2)
+        ]
+    )    
+    
+    manufacturer = models.CharField(
+        max_length=100,
+    )
+    
+    capacity = models.SmallIntegerField(
+        validators=[
+            MinValueValidator(1)
+        ]
+    )
+    
+    weight = models.FloatField(
+        validators=[
+            MinValueValidator(0.0)
+        ]
+    )
+    
+    launch_date = models.DateField()
+    
+    updated_at = models.DateTimeField(
+        auto_now_add=True,
+    )
+
+
+class Mission(models.Model):
     
