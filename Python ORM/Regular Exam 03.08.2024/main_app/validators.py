@@ -12,7 +12,7 @@ class OnlyDigitsValidator:
         
     def deconstruct(self):
         return (
-            'fruits.validators.OnlyDigitsValidator',
+            'validators.OnlyDigitsValidator',
             (),
             {'message': self.message}
         ) 
