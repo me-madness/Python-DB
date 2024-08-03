@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinLengthValidator, MaxValueValidator, MinValueValidator, RegexValidator
 from main_app.validators import OnlyDigitsValidator
+from main_app.managers import AstronautManager
 
 
 
@@ -40,6 +41,8 @@ class Astronaut(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True,
     )
+
+    objects = AstronautManager()
 
     def __str__(self):
         return self.name
