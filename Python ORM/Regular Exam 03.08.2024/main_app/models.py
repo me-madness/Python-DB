@@ -3,13 +3,24 @@ from django.core.validators import MinLengthValidator,MinValueValidator
 from validators import OnlyDigitsValidator
 # Create your models here.
 
-class Astronaut(models.Model):
+
+class DateTime(models.Model):
+    class Meta:
+        abstract = True
+        
     name = models.CharField(
         max_length=120,
         validators=[
             MinLengthValidator(2)
         ]
+    )    
+        
+    updated_at = models.DateTimeField(
+        auto_now_add=True,
     )
+   
+
+class Astronaut(DateTime):
     
     phone_number = models.CharField(
         max_length=15,
@@ -35,18 +46,8 @@ class Astronaut(models.Model):
         ]
     )
     
-    updated_at = models.DateTimeField(
-        auto_now_add=True,
-    )
    
-   
-class Spacecraft(models.Model):
-    name = models.CharField(
-        max_length=120,
-        validators=[
-            MinLengthValidator(2)
-        ]
-    )    
+class Spacecraft(DateTime):   
     
     manufacturer = models.CharField(
         max_length=100,
@@ -66,10 +67,37 @@ class Spacecraft(models.Model):
     
     launch_date = models.DateField()
     
-    updated_at = models.DateTimeField(
-        auto_now_add=True,
-    )
 
-
-class Mission(models.Model):
+class Mission(DateTime):
     
+    description = models.TextField(
+        null=False,
+        blank=False,
+    )
+    
+    status = models.CharField(
+        max_length=9,
+        default="Planned",
+        validators=[
+            #valid choices = "Planned", "Ongoing", "Completed"
+        ]
+        
+    )
+    
+    launch_date = models.DateField()
+    
+    spacecraft = models.ForeignKey(
+        to=Spacecraft,
+        on_delete=models.CASCADE,
+    )
+    
+    astronauts = models.ForeignKey(
+        to=Astronaut,
+    )
+    
+    commander = models.ForeignKey(
+        to=Astronaut,
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False,
+    )
