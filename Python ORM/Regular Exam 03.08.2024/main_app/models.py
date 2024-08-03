@@ -1,7 +1,24 @@
 from django.db import models
 from django.core.validators import MinLengthValidator,MinValueValidator 
 from validators import OnlyDigitsValidator
+from django import forms 
 # Create your models here.
+
+
+  
+# iterable 
+GEEKS_CHOICES =( 
+    ("1", "One"), 
+    ("2", "Two"), 
+    ("3", "Three"), 
+    ("4", "Four"), 
+    ("5", "Five"), 
+) 
+  
+# creating a form  
+class GeeksForm(forms.Form): 
+    geeks_field = forms.ChoiceField(choices = GEEKS_CHOICES) 
+
 
 
 class DateTime(models.Model):
@@ -20,14 +37,14 @@ class DateTime(models.Model):
     )
    
 
-class Astronaut(DateTime):
+class Astronaut(DateTime, GeeksForm):
     
     phone_number = models.CharField(
         max_length=15,
         unique=True,
-        validators=[
-            OnlyDigitsValidator()
-        ]
+        validators= [
+            GeeksForm()
+        ]    
     )
     
     is_active = models.BooleanField(
@@ -98,6 +115,6 @@ class Mission(DateTime):
     commander = models.ForeignKey(
         to=Astronaut,
         on_delete=models.CASCADE,
-        null=False,
+        null=True,
         blank=False,
     )
