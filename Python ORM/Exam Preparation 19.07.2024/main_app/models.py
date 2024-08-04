@@ -18,3 +18,7 @@ class MovieModel(models.Model):
     name = models.CharField(
         max_length=100
     )
+    
+    
+class QshMiHuq(models.Model):
+    pass    
